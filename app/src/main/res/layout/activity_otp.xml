@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OtpActivity"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/verification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Verification"
+        android:fontFamily="@font/medium"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.073" />
+
+    <ImageButton
+        android:id="@+id/back_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/back_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.073" />
+
+
+    <TextView
+        android:id="@+id/email_ad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="A 4-digit code has been sent to your email."
+        android:textSize="15sp"
+        android:fontFamily="@font/medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.188" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginTop="44dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="6"
+        app:layout_constraintBottom_toTopOf="@+id/verify_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email_ad">
+
+        <EditText
+            android:id="@+id/otp_digit_1"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_input"
+            android:gravity="center"
+            android:fontFamily="@font/regular"
+            android:importantForAccessibility="yes"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textColorHint="#C5C5C5"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/otp_digit_2"
+            android:fontFamily="@font/regular"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_input"
+            android:gravity="center"
+            android:importantForAccessibility="yes"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textColorHint="#C5C5C5"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/otp_digit_3"
+            android:fontFamily="@font/regular"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_input"
+            android:gravity="center"
+            android:importantForAccessibility="yes"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textColorHint="#C5C5C5"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/otp_digit_4"
+            android:fontFamily="@font/regular"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_input"
+            android:gravity="center"
+            android:importantForAccessibility="yes"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textColorHint="#C5C5C5"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/verify_btn"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:backgroundTint="@color/dark_blue"
+        android:text="Verify"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:fontFamily="@font/semibold"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.38" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
