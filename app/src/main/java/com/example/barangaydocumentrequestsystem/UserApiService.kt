@@ -1,10 +1,10 @@
 package com.example.barangaydocumentrequestsystem
 
+import com.google.gson.annotations.SerializedName
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*
 import retrofit2.http.GET
-
 
 
 interface UserApiService {
@@ -36,13 +36,13 @@ interface UserApiService {
     ): Call<ResponseBody>
 
     data class User(
-        val id: String,
-        val username: String,
-        val email: String,
-        val address: String,
-        val contact: String
+        @SerializedName("id") val id: String?,
+        @SerializedName("username") val username: String?,
+        @SerializedName("email") val email: String?,
+        @SerializedName("contact_num") val contact_num: String?
     )
-    @FormUrlEncoded
+
     @GET("fetchUser.php") // Your PHP endpoint
     fun getUserProfile(@Query("user_id") userId: String): Call<User>
+
 }

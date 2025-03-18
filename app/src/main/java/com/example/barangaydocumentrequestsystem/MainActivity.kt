@@ -3,6 +3,7 @@ package com.example.barangaydocumentrequestsystem
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
@@ -10,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import okhttp3.ResponseBody
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -54,25 +56,42 @@ class MainActivity : AppCompatActivity() {
                 override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                     if (response.isSuccessful) {
                         response.body()?.let { responseBody ->
-                            val userId = responseBody.string()
-                            val sharedPref = getSharedPreferences("UserPrefs", MODE_PRIVATE)
-                            sharedPref.edit().putString("user_id", userId).apply()
+                            val responseText = responseBody.string().trim()
+                            Log.d("MainActivity", "Login Response: $responseText")
 
-                            Toast.makeText(this@MainActivity, "Login Successful", Toast.LENGTH_SHORT).show()
-                            startActivity(Intent(this@MainActivity, HomeActivity::class.java))
-                            finish()
+                            try {
+                                val jsonResponse = JSONObject(responseText)
+                                if (jsonResponse.has("error")) {
+                                    Toast.makeText(this@MainActivity, "Login Failed: ${jsonResponse.getString("error")}", Toast.LENGTH_SHORT).show()
+                                } else if (jsonResponse.has("user_id")) {
+                                    val userId = jsonResponse.getString("user_id") // Extract user_id
+
+                                    val sharedPref = getSharedPreferences("UserPrefs", MODE_PRIVATE)
+                                    sharedPref.edit().putString("user_id", userId).apply()
+
+                                    Toast.makeText(this@MainActivity, "Login Successful", Toast.LENGTH_SHORT).show()
+                                    startActivity(Intent(this@MainActivity, HomeActivity::class.java))
+                                    finish()
+                                } else {
+                                    Toast.makeText(this@MainActivity, "Unexpected server response", Toast.LENGTH_SHORT).show()
+                                }
+                            } catch (e: Exception) {
+                                Log.e("MainActivity", "JSON Parsing Error: ${e.message}")
+                                Toast.makeText(this@MainActivity, "Response Parsing Error", Toast.LENGTH_SHORT).show()
+                            }
                         }
                     } else {
-                        Toast.makeText(this@MainActivity, "Invalid Credentials", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@MainActivity, "Login Failed", Toast.LENGTH_SHORT).show()
                     }
                 }
 
                 override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                    Toast.makeText(this@MainActivity, "Network Error: Please try again!", Toast.LENGTH_SHORT).show()
-                    t.printStackTrace()
+                    Log.e("MainActivity", "Network Error: ${t.message}")
+                    Toast.makeText(this@MainActivity, "Network Error: ${t.message}", Toast.LENGTH_SHORT).show()
                 }
             })
     }
+
 
     private fun isValidEmail(email: String): Boolean {
         return Patterns.EMAIL_ADDRESS.matcher(email).matches()

@@ -25,7 +25,7 @@ class SignupActivity : AppCompatActivity() {
         val confpasswordField: EditText = findViewById(R.id.confirmpassword)
         val addressField: EditText = findViewById(R.id.address)
         val contactNumberField: EditText = findViewById(R.id.contact)
-        val signUpButton: Button = findViewById(R.id.signup_btn)
+        val signUpButton: Button = findViewById(R.id.register_btn)
         val loginText: TextView = findViewById(R.id.login_btn)
 
         signUpButton.setOnClickListener {
