@@ -3,7 +3,7 @@ package com.example.barangaydocumentrequestsystem
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.GET
+
 
 object RetrofitClient {
     private const val BASE_URL = "http://10.0.2.2/brgysysreq-main-api/"
