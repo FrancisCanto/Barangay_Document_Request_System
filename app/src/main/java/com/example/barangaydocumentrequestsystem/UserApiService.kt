@@ -39,7 +39,8 @@ interface UserApiService {
         @SerializedName("id") val id: String?,
         @SerializedName("username") val username: String?,
         @SerializedName("email") val email: String?,
-        @SerializedName("contact_num") val contact_num: String?
+        @SerializedName("contact_num") val contact_num: String?,
+        @SerializedName("address") val address: String?
     )
 
     @GET("fetchUser.php") // Your PHP endpoint
