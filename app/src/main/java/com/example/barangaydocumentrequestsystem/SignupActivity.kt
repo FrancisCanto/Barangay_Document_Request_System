@@ -3,6 +3,7 @@ package com.example.barangaydocumentrequestsystem
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -36,14 +37,23 @@ class SignupActivity : AppCompatActivity() {
             val contactNumberInput = contactNumberField.text.toString()
             val confPasswordInput = confpasswordField.text.toString()
 
-            if (usernameInput.isNotEmpty() && emailInput.isNotEmpty() && passwordInput.isNotEmpty() &&
-                addressInput.isNotEmpty() && contactNumberInput.isNotEmpty() && passwordInput == confPasswordInput) {
+            if (usernameInput.isEmpty() && emailInput.isEmpty() && passwordInput.isEmpty() &&
+                addressInput.isEmpty() && contactNumberInput.isEmpty() && passwordInput.isEmpty() && confPasswordInput.isEmpty()) {
+                Toast.makeText(this, "All fields are required!", Toast.LENGTH_SHORT).show()
+            } else if (!isValidEmail(emailInput)) {
+                Toast.makeText(this, "Enter a valid email!", Toast.LENGTH_SHORT).show()
+            } else if (!isValidPassword(passwordInput)) {
+                Toast.makeText(this, "Password must be at least 8 characters!", Toast.LENGTH_SHORT).show()
+            }
+            else if (passwordInput != confPasswordInput) {
+                Toast.makeText(this, "Passwords don't match!", Toast.LENGTH_SHORT).show()
+
+            }
+            else {
 
                 val intent = Intent(this, AgreementActivity::class.java)
                 startActivity(intent)
                 registerUser(usernameInput, emailInput, passwordInput, addressInput, contactNumberInput)
-            } else {
-                Toast.makeText(this, "All fields are required! Or passwords don't match!", Toast.LENGTH_SHORT).show()
             }
         }
         loginText.setOnClickListener {
@@ -70,6 +80,14 @@ class SignupActivity : AppCompatActivity() {
                     Toast.makeText(this@SignupActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
                 }
             })
+    }
+
+    private fun isValidEmail(email: String): Boolean {
+        return Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    }
+
+    private fun isValidPassword(password: String): Boolean {
+        return password.length >= 8
     }
 
 }

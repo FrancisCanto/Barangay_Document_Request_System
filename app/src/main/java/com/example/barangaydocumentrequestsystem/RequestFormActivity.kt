@@ -3,6 +3,8 @@ package com.example.barangaydocumentrequestsystem
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
@@ -26,6 +28,19 @@ class RequestFormActivity : AppCompatActivity() {
         val document: EditText = findViewById(R.id.document)
         val submitButton: Button = findViewById(R.id.submit_btn)
         val backButton: ImageButton = findViewById(R.id.back_btn)
+
+        // Retrieve stored user ID
+        val sharedPref = getSharedPreferences("UserPrefs", MODE_PRIVATE)
+        val userId = sharedPref.getString("user_id", null) // ✅ Store as plain string
+
+        Log.d("RequestFormActivity", "Retrieved user_id: $userId") // Debugging log
+
+        if (!userId.isNullOrEmpty()) {
+            fetchUserProfile(userId) // Fetch and display user profile
+        } else {
+            Log.e("RequestFormActivity", "User ID is NULL!")
+            Toast.makeText(this, "Error: User ID not found!", Toast.LENGTH_SHORT).show()
+        }
 
         backButton.setOnClickListener {
             val intent = Intent(this, DocumentsActivity::class.java)
@@ -73,4 +88,40 @@ class RequestFormActivity : AppCompatActivity() {
                 }
             })
     }
+
+    private fun fetchUserProfile(userId: String) {
+        RetrofitClient.instance.getUserProfile(userId)
+            .enqueue(object : Callback<UserApiService.User> {
+                override fun onResponse(call: Call<UserApiService.User>, response: Response<UserApiService.User>) {
+                    Log.d("RequestFormActivity", "API Response received")
+
+                    // Print the raw response for debugging
+                    Log.d("RequestFormActivity", "Raw Response: ${response.body()}")
+
+                    if (response.isSuccessful) {
+                        val user = response.body()
+                        if (user != null) {
+                            Log.d("RequestFormActivity", "Parsed User Data: $user")
+
+                            findViewById<EditText>(R.id.fullname).text = Editable.Factory.getInstance().newEditable(user.username ?: "N/A")
+                            findViewById<EditText>(R.id.address).text = Editable.Factory.getInstance().newEditable(user.email ?: "N/A")
+                            findViewById<EditText>(R.id.contact).text = Editable.Factory.getInstance().newEditable(user.contact_num ?: "N/A")
+                        } else {
+                            Log.e("RequestFormActivity", "User data is NULL")
+                            Toast.makeText(this@RequestFormActivity, "Failed to load profile", Toast.LENGTH_SHORT).show()
+                        }
+                    } else {
+                        val errorResponse = response.errorBody()?.string()
+                        Log.e("RequestFormActivity", "Failed to load profile: $errorResponse")
+                        Toast.makeText(this@RequestFormActivity, "Error: $errorResponse", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<UserApiService.User>, t: Throwable) {
+                    Log.e("RequestFormActivity", "API Error: ${t.message}")
+                    Toast.makeText(this@RequestFormActivity, "Network Error: ${t.message}", Toast.LENGTH_SHORT).show()
+                }
+            })
+    }
+
 }
