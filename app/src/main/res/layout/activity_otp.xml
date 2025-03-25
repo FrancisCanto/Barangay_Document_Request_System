@@ -39,16 +39,69 @@
         android:id="@+id/email_ad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="A 4-digit code has been sent to your email."
-        android:textSize="15sp"
         android:fontFamily="@font/medium"
+        android:gravity="center"
+        android:text="Enter 4-Digit Verification Code"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.188" />
+        app:layout_constraintVertical_bias="0.172" />
+
+    <Button
+        android:id="@+id/verify_btn"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:backgroundTint="@color/dark_blue"
+        android:fontFamily="@font/semibold"
+        android:text="Verify"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.412" />
+
+    <LinearLayout
+        android:id="@+id/resend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.345">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/regular"
+            android:text="Didn’t received a code?"
+            android:textColor="#A7A6A6"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/resend_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/semibold"
+            android:text=" Resend"
+            android:textColor="@color/dark_blue"
+            android:textSize="12sp" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -61,84 +114,24 @@
         app:layout_constraintBottom_toTopOf="@+id/verify_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email_ad">
+        app:layout_constraintTop_toBottomOf="@+id/email_ad"
+        app:layout_constraintVertical_bias="0.0">
 
         <EditText
             android:id="@+id/otp_digit_1"
-            android:layout_width="0dp"
+            android:layout_width="60dp"
             android:layout_height="55dp"
             android:layout_margin="4dp"
             android:layout_weight="1"
             android:background="@drawable/custom_input"
-            android:gravity="center"
             android:fontFamily="@font/regular"
+            android:gravity="center"
             android:importantForAccessibility="yes"
             android:inputType="number"
-            android:maxLength="1"
+            android:maxLength="4"
             android:textColorHint="#C5C5C5"
             android:textSize="18sp" />
 
-        <EditText
-            android:id="@+id/otp_digit_2"
-            android:fontFamily="@font/regular"
-            android:layout_width="0dp"
-            android:layout_height="55dp"
-            android:layout_margin="4dp"
-            android:layout_weight="1"
-            android:background="@drawable/custom_input"
-            android:gravity="center"
-            android:importantForAccessibility="yes"
-            android:inputType="number"
-            android:maxLength="1"
-            android:textColorHint="#C5C5C5"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/otp_digit_3"
-            android:fontFamily="@font/regular"
-            android:layout_width="0dp"
-            android:layout_height="55dp"
-            android:layout_margin="4dp"
-            android:layout_weight="1"
-            android:background="@drawable/custom_input"
-            android:gravity="center"
-            android:importantForAccessibility="yes"
-            android:inputType="number"
-            android:maxLength="1"
-            android:textColorHint="#C5C5C5"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/otp_digit_4"
-            android:fontFamily="@font/regular"
-            android:layout_width="0dp"
-            android:layout_height="55dp"
-            android:layout_margin="4dp"
-            android:layout_weight="1"
-            android:background="@drawable/custom_input"
-            android:gravity="center"
-            android:importantForAccessibility="yes"
-            android:inputType="number"
-            android:maxLength="1"
-            android:textColorHint="#C5C5C5"
-            android:textSize="18sp" />
     </LinearLayout>
-
-    <Button
-        android:id="@+id/verify_btn"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:backgroundTint="@color/dark_blue"
-        android:text="Verify"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:fontFamily="@font/semibold"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.38" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

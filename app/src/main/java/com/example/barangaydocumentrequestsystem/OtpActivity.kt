@@ -18,9 +18,6 @@ class OtpActivity : AppCompatActivity() {
         setContentView(R.layout.activity_otp)
 
         val otpDigit1: EditText = findViewById(R.id.otp_digit_1)
-        val otpDigit2: EditText = findViewById(R.id.otp_digit_2)
-        val otpDigit3: EditText = findViewById(R.id.otp_digit_3)
-        val otpDigit4: EditText = findViewById(R.id.otp_digit_4)
         val verifyButton: Button = findViewById(R.id.verify_btn)
         val backButton: ImageButton = findViewById(R.id.back_btn)
 
@@ -32,11 +29,8 @@ class OtpActivity : AppCompatActivity() {
 
         verifyButton.setOnClickListener {
             val otp1 = otpDigit1.text.toString().trim()
-            val otp2 = otpDigit2.text.toString().trim()
-            val otp3 = otpDigit3.text.toString().trim()
-            val otp4 = otpDigit4.text.toString().trim()
 
-            if (otp1.isEmpty() || otp2.isEmpty() || otp3.isEmpty() || otp4.isEmpty()) {
+            if (otp1.isEmpty()) {
                 Toast.makeText(this, "Please enter all OTP digits", Toast.LENGTH_SHORT).show()
             } else {
                 val intent = Intent(this, NewpasswordActivity::class.java)

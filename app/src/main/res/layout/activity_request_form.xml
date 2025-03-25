@@ -5,20 +5,9 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RequestFormActivity"
+    tools:context=".MainActivity"
     android:background="@color/white">
 
-    <ImageButton
-        android:id="@+id/back_btn"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:background="@drawable/back_btn"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.061"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.035" />
 
     <TextView
         android:id="@+id/drs2"
@@ -27,7 +16,7 @@
         android:fontFamily="@font/medium"
         android:gravity="center"
         android:text="Request System"
-        android:textColor="@color/dark_blue"
+        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +32,7 @@
         android:fontFamily="@font/semibold"
         android:gravity="center"
         android:text="Barangay"
-        android:textColor="@color/dark_blue"
+        android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,7 +61,7 @@
         android:id="@+id/submit_btn"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:backgroundTint="@color/dark_blue"
+        android:backgroundTint="@color/black"
         android:fontFamily="@font/semibold"
         android:text="Submit"
         android:textColor="@color/white"
@@ -208,7 +197,6 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@id/form1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/request_form">
 
@@ -221,24 +209,33 @@
             android:text="Document Type"
             android:textColor="#8B8B8B"
             android:textSize="13sp"
-            app:layout_constraintBottom_toTopOf="@+id/document"
+            app:layout_constraintBottom_toTopOf="@+id/layoutdocu"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.059"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <EditText
-            android:id="@+id/document"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            android:id="@+id/layoutdocu"
             android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:background="@drawable/custom_input"
-            android:inputType="textPersonName"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
+            android:layout_height="70dp"
             android:fontFamily="@font/medium"
             android:textSize="13sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/docutype_label" />
+            app:layout_constraintTop_toTopOf="@+id/docutype_label" >
+
+            <AutoCompleteTextView
+                android:id="@+id/document"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Select Document"
+                android:fontFamily="@font/medium"
+                android:textSize="13sp"
+                android:inputType="none"
+
+                />
+        </com.google.android.material.textfield.TextInputLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -15,6 +15,7 @@
         android:fontFamily="@font/medium"
         android:text="Data Privacy Agreement"
         android:textSize="20dp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -45,7 +46,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="450dp"
                 android:fontFamily="@font/regular"
-                android:text="Thank you for using Barangay Request System. We value your privacy and are committed to protecting your personal information.\n\n1. Information We Collect:\nWe collect personal details (e.g., name, address, contact information) and document-related information to process your requests.\n\n2. How We Use Your Information:\nYour data is used to verify your identity, process requests, communicate status updates, and comply with legal requirements.\n\n3. Sharing Your Information:\nWe share data only with authorized barangay personnel and trusted service providers. We do not sell your information.\n\n4. Data Security:\nWe use encryption and access controls to protect your data.\n\n5. Your Rights:\nYou may access, correct, or delete your data, or withdraw consent at any time by visiting the Brgy. Hall.\n\nBy using the app, you agree to this Data Privacy Agreement."
+                android:textColor="@color/black"
+                android:text="Thank you for using Barangay Request System. We value your privacy and are committed to protecting your personal information.\n\n1. Information We Collect:\nWe collect personal details (e.g., name, address, contact information) and document-related information to process your requests.\n\n2. How We Will Use Your Information:\nYour data is used to verify your identity, process requests, communicate status updates, and comply with legal requirements.\n\n3. Sharing Your Information:\nWe share data only with authorized barangay personnel and trusted service providers. We do not sell your information.\n\n4. Data Security:\nWe use encryption and access controls to protect your data.\n\n5. Your Rights:\nYou may access, correct, or delete your data, or withdraw consent at any time by visiting the Brgy. Hall.\n\nBy using the app, you agree to this Data Privacy Agreement."
                 android:textSize="12sp" />
 
             <View
@@ -77,6 +79,7 @@
                     android:layout_height="wrap_content"
                     android:text="I agree"
                     android:fontFamily="@font/regular"
+                    android:textColor="@color/black"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

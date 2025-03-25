@@ -6,6 +6,20 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
+    <string-array name="documents">
+        <item>Barangay Clearance</item>
+        <item>Barangay Certificate of Residency</item>
+        <item>Barangay Certificate of Indigency</item>
+        <item>Barangay Business Clearance</item>
+        <item>Barangay Certificate of Good Moral Character</item>
+        <item>Barangay Certificate of No Pending Case</item>
+        <item>Barangay Certificate for Solo Parent</item>
+        <item>Barangay Certificate of Calamity Assistance</item>
+        <item>Barangay Blotter Certification</item>
+        <item>Barangay Certificate of Land Ownership or Tenancy</item>
+
+    </string-array>
+
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
         volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus

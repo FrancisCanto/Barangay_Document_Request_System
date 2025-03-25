@@ -5,11 +5,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.util.Log
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -17,6 +20,8 @@ import retrofit2.Response
 
 class RequestFormActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_request_form)
@@ -28,6 +33,17 @@ class RequestFormActivity : AppCompatActivity() {
         val document: EditText = findViewById(R.id.document)
         val submitButton: Button = findViewById(R.id.submit_btn)
         val backButton: ImageButton = findViewById(R.id.back_btn)
+
+        // Get the array of documents for the dropdown
+        val documents = resources.getStringArray(R.array.documents)
+
+// Create an ArrayAdapter to bind the data to the AutoCompleteTextView
+        val arrayAdapter = ArrayAdapter(this, R.layout.dropdown_item, documents)
+
+// Find the AutoCompleteTextView and set the adapter
+        val autoCompleteTextView = findViewById<AutoCompleteTextView>(R.id.document)
+        autoCompleteTextView.setAdapter(arrayAdapter)
+
 
         // Retrieve stored user ID
         val sharedPref = getSharedPreferences("UserPrefs", MODE_PRIVATE)
@@ -43,7 +59,7 @@ class RequestFormActivity : AppCompatActivity() {
         }
 
         backButton.setOnClickListener {
-            val intent = Intent(this, DocumentsActivity::class.java)
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
             finish()
         }

@@ -39,7 +39,7 @@ class NotificationActivity : AppCompatActivity() {
             insets
         }
 
-        val backButton: ImageButton = findViewById(R.id.back_btn2)
+        val backButton: ImageButton = findViewById(R.id.back_btn)
         backButton.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)

@@ -36,7 +36,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         request_btn.setOnClickListener {
-            val intent = Intent(this, DocumentsActivity::class.java)
+            val intent = Intent(this, RequestFormActivity::class.java)
             startActivity(intent)
         }
 
